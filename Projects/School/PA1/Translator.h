@@ -5,6 +5,7 @@
 class Translator
 {
     private:
+        // A pointer to the Model class
         Model* translationModel;
     public:
         // Constructor and Deconstructor

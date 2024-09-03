@@ -8,13 +8,10 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Stores the arguments to two variables
-    std::string inputFile = argv[1];
-    std::string outputFile = argv[2];
-
-    // Processes the file using the file processor
+    // Processes the file using the file processor while passing in the input file name and output file name as arguments
     FileProcessor fileProcessor;
-    fileProcessor.processFile(inputFile, outputFile);
+    fileProcessor.processFile(argv[1], argv[2]);
 
+    // Returns a 0 because it successfully ran
     return 0;
 }

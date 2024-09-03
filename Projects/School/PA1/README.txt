@@ -19,6 +19,7 @@ Below are all the sources I used throughout my project. Next to each link is how
     - https://www.programiz.com/cpp-programming/library-function/cctype/tolower (More help with toLower and similar functions)
     - https://www.geeksforgeeks.org/substring-in-cpp/# (Taught me how to use Substrings in C++)
     - https://stackoverflow.com/questions/62797501/why-should-i-use-stdcerr-instead-of-stdcout-in-exception-handling (Taught me how to use std::cerr for error handling)
+    - https://www.geeksforgeeks.org/arrow-operator-in-c-c-with-examples/# (Helped me understand the "->" operator)
 
 RUNNING INSTRUCTIONS
 Compile the file as so: "g++ *.cpp -o program.exe"
