@@ -15,7 +15,7 @@ std::string Translator::translateEnglishWord(std::string englishWord) {
     std::string result = "";
 
     // Loops through every letter in the word
-    for(int i = 0; i < englishWord.size(); i++) {
+    for(int i = 0; i < englishWord.size(); ++i) {
         // Checks if it is a vowel, consonant, or punctuation/other character
         switch ((char) std::tolower(englishWord[i])) {
             case 'a':
@@ -69,7 +69,7 @@ std::string Translator::translateEnglishSentence(std::string englishSentence) {
     std::string currentWord = "";
 
     // Loops through every letter in the english sentence
-    for(int i = 0; i < englishSentence.size(); i++) {
+    for(int i = 0; i < englishSentence.size(); ++i) {
         if(englishSentence[i] == ' ') {
             // If the loop comes across the space, it knows current word is complete and it sends it to be translated
             result += translateEnglishWord(currentWord) += ' ';
@@ -77,20 +77,16 @@ std::string Translator::translateEnglishSentence(std::string englishSentence) {
             // Resets current word to empty
             currentWord = "";
         } else {
+            // Keep adding letters to current word
+            currentWord += englishSentence[i];
+
             if(i == englishSentence.size() - 1) {
                 // If it is the last letter in the sentence, translate the current word
+                std::cout << "Current word: " << currentWord << std::endl;
                 result += translateEnglishWord(currentWord);
-            } else {
-                // If it is just a random letter, keep adding letters to current word
-                currentWord += englishSentence[i];
             }
         }
     }
-
-    // // if the current word is not empty at the very end, it will translate that last bit.
-    // if(!currentWord.empty()) {
-    //     result += translateEnglishWord(currentWord);
-    // }
 
     // Return the translated sentence
     return result;
