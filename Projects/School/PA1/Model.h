@@ -1,7 +1,6 @@
 #include <iostream>
 
-class Model
-{
+class Model {
     private:
 
     public:

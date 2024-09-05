@@ -2,8 +2,7 @@
 #include <cctype>
 #include "Model.h"
 
-class Translator
-{
+class Translator {
     private:
         // A pointer to the Model class
         Model* translationModel;
