@@ -82,7 +82,6 @@ std::string Translator::translateEnglishSentence(std::string englishSentence) {
 
             if(i == englishSentence.size() - 1) {
                 // If it is the last letter in the sentence, translate the current word
-                std::cout << "Current word: " << currentWord << std::endl;
                 result += translateEnglishWord(currentWord);
             }
         }
