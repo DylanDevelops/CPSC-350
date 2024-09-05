@@ -22,5 +22,5 @@ Below are all the sources I used throughout my project. Next to each link is how
     - https://www.geeksforgeeks.org/arrow-operator-in-c-c-with-examples/# (Helped me understand the "->" operator)
 
 RUNNING INSTRUCTIONS
-Compile the file as so: "g++ *.cpp -o program.exe"
-Run the file as so: "./program.exe INPUT_FILE.txt OUTPUT_FILE.html" ( !!! Make sure to include file extensions !!! )
+Compile the file as so: "g++ *.cpp -o program.out"
+Run the file as so: "./program.out INPUT_FILE.txt OUTPUT_FILE.html" ( !!! Make sure to include file extensions !!! )

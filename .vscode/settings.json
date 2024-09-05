@@ -52,6 +52,7 @@
         "stack": "cpp",
         "unordered_map": "cpp",
         "vector": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "iomanip": "cpp"
     }
 }
