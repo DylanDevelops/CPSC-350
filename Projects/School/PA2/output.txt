@@ -1,0 +1,307 @@
+MARIO GAME STARTS HERE:
+
+2 levels have been generated: 
+
+Level #1
+g k k m k 
+b g m c k 
+g k k m m 
+k m g g m 
+g g c w k 
+------------------
+Level #2
+g m b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x m g x m 
+------------------
+
+Placing Mario in first level:
+g k k m k 
+b g m c k 
+g k k m m 
+k m g g m 
+H g c w k 
+
+Level #1
+
+Mario is at position: (4, 0)
+Mario is at power level: 0
+Mario will move DOWN
+Mario fought a goomba and won.
+Mario has 3 lives left.
+Mario has 0 coins.
+H k k m k 
+b g m c k 
+g k k m m 
+k m g g m 
+x g c w k 
+-----------------------
+
+Level #1
+
+Mario is at position: (0, 0)
+Mario is at power level: 0
+Mario will move DOWN
+Mario fought the level boss and won!
+Mario warped to the next level.
+Mario has 3 lives left.
+Mario has 0 coins.
+g m b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+H m g x m 
+-----------------------
+
+Level #2
+
+Mario is at position: (4, 0)
+Mario is at power level: 0
+Mario will move DOWN
+Mario fought a goomba and lost. 
+Mario has 2 lives left.
+Mario has 0 coins.
+g m b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+H m g x m 
+-----------------------
+
+Level #2
+
+Mario is at position: (4, 0)
+Mario is at power level: 0
+Mario will move LEFT
+Mario ate a mushroom.
+Mario has 2 lives left.
+Mario has 0 coins.
+g m b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x m g x H 
+-----------------------
+
+Level #2
+
+Mario is at position: (4, 4)
+Mario is at power level: 1
+Mario will move DOWN
+Mario visited an empty space.
+Mario has 2 lives left.
+Mario has 0 coins.
+g m b g H 
+g x m g m 
+k k x m x 
+k g x m c 
+x m g x x 
+-----------------------
+
+Level #2
+
+Mario is at position: (0, 4)
+Mario is at power level: 1
+Mario will move RIGHT
+Mario fought a goomba and won.
+Mario has 2 lives left.
+Mario has 0 coins.
+H m b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x m g x x 
+-----------------------
+
+Level #2
+
+Mario is at position: (0, 0)
+Mario is at power level: 1
+Mario will move RIGHT
+Mario ate a mushroom.
+Mario has 2 lives left.
+Mario has 0 coins.
+x H b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x m g x x 
+-----------------------
+
+Level #2
+
+Mario is at position: (0, 1)
+Mario is at power level: 2
+Mario will move LEFT
+Mario visited an empty space.
+Mario has 2 lives left.
+Mario has 0 coins.
+H x b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x m g x x 
+-----------------------
+
+Level #2
+
+Mario is at position: (0, 0)
+Mario is at power level: 2
+Mario will move UP
+Mario visited an empty space.
+Mario has 2 lives left.
+Mario has 0 coins.
+x x b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+H m g x x 
+-----------------------
+
+Level #2
+
+Mario is at position: (4, 0)
+Mario is at power level: 2
+Mario will move RIGHT
+Mario ate a mushroom.
+Mario has 2 lives left.
+Mario has 0 coins.
+x x b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x H g x x 
+-----------------------
+
+Level #2
+
+Mario is at position: (4, 1)
+Mario is at power level: 2
+Mario will move RIGHT
+Mario fought a goomba and won.
+Mario has 2 lives left.
+Mario has 0 coins.
+x x b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x x H x x 
+-----------------------
+
+Level #2
+
+Mario is at position: (4, 2)
+Mario is at power level: 2
+Mario will move LEFT
+Mario visited an empty space.
+Mario has 2 lives left.
+Mario has 0 coins.
+x x b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x H x x x 
+-----------------------
+
+Level #2
+
+Mario is at position: (4, 1)
+Mario is at power level: 2
+Mario will move RIGHT
+Mario visited an empty space.
+Mario has 2 lives left.
+Mario has 0 coins.
+x x b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x x H x x 
+-----------------------
+
+Level #2
+
+Mario is at position: (4, 2)
+Mario is at power level: 2
+Mario will move RIGHT
+Mario visited an empty space.
+Mario has 2 lives left.
+Mario has 0 coins.
+x x b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x x x H x 
+-----------------------
+
+Level #2
+
+Mario is at position: (4, 3)
+Mario is at power level: 2
+Mario will move RIGHT
+Mario visited an empty space.
+Mario has 2 lives left.
+Mario has 0 coins.
+x x b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x x x x H 
+-----------------------
+
+Level #2
+
+Mario is at position: (4, 4)
+Mario is at power level: 2
+Mario will move DOWN
+Mario visited an empty space.
+Mario has 2 lives left.
+Mario has 0 coins.
+x x b g H 
+g x m g m 
+k k x m x 
+k g x m c 
+x x x x x 
+-----------------------
+
+Level #2
+
+Mario is at position: (0, 4)
+Mario is at power level: 2
+Mario will move RIGHT
+Mario visited an empty space.
+Mario has 2 lives left.
+Mario has 0 coins.
+H x b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x x x x x 
+-----------------------
+
+Level #2
+
+Mario is at position: (0, 0)
+Mario is at power level: 2
+Mario will move RIGHT
+Mario visited an empty space.
+Mario has 2 lives left.
+Mario has 0 coins.
+x H b g x 
+g x m g m 
+k k x m x 
+k g x m c 
+x x x x x 
+-----------------------
+
+Level #2
+
+Mario is at position: (0, 1)
+Mario is at power level: 2
+Mario will move RIGHT
+Mario fought the level boss and won!
+Mario has 2 lives left.
+Mario has 0 coins.
+WE WON THE GAME!
+It took 19 moves.
