@@ -1,7 +1,16 @@
 #include <iostream>
 
-int main() {
-    int* nums = new int[5];
+using namespace std;
 
-    
+int main() {
+    bool isAlive = true;
+
+
+    std::string message = isAlive ? "Alive" : "Dead";
+
+    if(isAlive) {
+        message = "Alive";
+    } else {
+        message = "Dead";
+    }
 }
