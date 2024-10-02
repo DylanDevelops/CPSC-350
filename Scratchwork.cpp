@@ -1,16 +1,12 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 int main() {
-    bool isAlive = true;
+    vector<int> myVector;
 
-
-    std::string message = isAlive ? "Alive" : "Dead";
-
-    if(isAlive) {
-        message = "Alive";
-    } else {
-        message = "Dead";
-    }
+    myVector.push_back(5);
+    myVector.push_back(10);
+    myVector.at(1);
 }
