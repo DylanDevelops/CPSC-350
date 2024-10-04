@@ -4,9 +4,9 @@
 using namespace std;
 
 int main() {
-    vector<int> myVector;
+    int num = 9;
 
-    myVector.push_back(5);
-    myVector.push_back(10);
-    myVector.at(1);
+    string answer = num % 2 ? "O" : "E";
+
+    std::cout << answer << std::endl;
 }
