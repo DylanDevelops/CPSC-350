@@ -7,10 +7,17 @@
 */
 
 #include <iostream>
-#include "MonoStack.h"
-
-using namespace std;
+#include "SpeakerView.h"
 
 int main(int argc, char* argv[]) {
-    
+    if(argc != 2) {
+        std::cerr << "[ERROR] Incorrect Usage of Program! Please try again as so: \"" << argv[0] << " INPUT_FILE_NAME.txt\"" << std::endl;
+        return 1;
+    }
+
+    // Creates a Speaker View
+    SpeakerView speakerView = SpeakerView(argv[1]);
+
+    // Processes SpeakerView
+    speakerView.Process();
 }

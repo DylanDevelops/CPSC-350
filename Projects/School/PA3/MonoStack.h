@@ -6,8 +6,9 @@
  * Assignment or Exercise Number: PA3: Do You See What I See?
 */
 
-#ifndef T_STACK_H
-#define T_STACK_H
+#ifndef MONO_STACK_H
+#define MONO_STACK_H
+
 #include <iostream> 
 
 template <typename T>
