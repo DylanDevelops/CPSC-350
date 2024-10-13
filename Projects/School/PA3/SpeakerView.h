@@ -10,6 +10,7 @@
 #define SPEAKER_VIEW_H
 
 #include <iostream>
+#include <fstream>
 
 class SpeakerView {
     public:
@@ -19,13 +20,15 @@ class SpeakerView {
         void Process();
 
     private:
-        void DisplayResults();
         void DetermineDimensions();
+        void ReadHeights();
+        void CalculateVisibility();
 
         // variables
         std::string inputPath;
         int numRows;
         int numCols;
+        double** heights;
 };
 
 #endif
