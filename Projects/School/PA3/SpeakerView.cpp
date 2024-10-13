@@ -49,7 +49,6 @@ void SpeakerView::DetermineDimensions() {
             }
 
             if(inSelection && !line.empty()) {
-                std::cout << line << std::endl;
                 numRows++;
                 if(!foundCols) {
                     for(char c : line) {
@@ -62,8 +61,6 @@ void SpeakerView::DetermineDimensions() {
             }
         }
         inputFile.close();
-
-        std::cout << numCols << " x " << numRows << std::endl;
     } else {
         std::cerr << "[ERROR] There was an issue opening the input file. Please try again!" << std::endl;
     }
@@ -117,5 +114,29 @@ void SpeakerView::ReadHeights() {
         inputFile.close();
     } else {
         std::cerr << "[ERROR] There was an issue opening the input file. Please try again!" << std::endl;
+    }
+}
+
+void SpeakerView::CalculateVisibility() {
+    for(int col = 0; col < numCols; ++col) {
+        MonoStack<double> monoStack(numRows, 'd');
+        double* visibleHeights = new double[numRows];
+        int visibleCount = 0;
+
+        for(int row = 0; row < numRows; ++row) {
+            monoStack.push(heights[row][col]);
+            visibleHeights[visibleCount++] = heights[row][col];
+        }
+
+        std::cout << "In column " << col << " there are " << visibleCount << " that can see. Their heights are: ";
+        for(int i = 0; i < visibleCount; ++i) {
+            std::cout << visibleHeights[i];
+            if(i != visibleCount - 1) {
+                std::cout << ", ";
+            }
+        }
+        std::cout << " inches." << std::endl;
+
+        delete[] visibleHeights;
     }
 }

@@ -20,4 +20,6 @@ int main(int argc, char* argv[]) {
 
     // Processes SpeakerView
     speakerView.Process();
+
+    return 0;
 }
