@@ -123,18 +123,27 @@ void SpeakerView::CalculateVisibility() {
         double* visibleHeights = new double[numRows];
         int visibleCount = 0;
 
-        for(int row = 0; row < numRows; ++row) {
+        for(int row = numRows - 1; row >= 0; --row) {
             while(!monoStack.isEmpty() && monoStack.peek() <= heights[row][col]) {
                 monoStack.pop();
             }
             monoStack.push(heights[row][col]);
-            visibleHeights[visibleCount++] = heights[row][col];
         }
 
-        std::cout << "In column " << col << " there are " << monoStack.size() << " that can see. Their heights are: ";
-        for(int i = 0; i < monoStack.size(); ++i) {
+        while(!monoStack.isEmpty()) {
+            visibleHeights[visibleCount++] = monoStack.pop();
+        }
+
+        for (int i = 0; i < visibleCount / 2; ++i) {
+            double temp = visibleHeights[i];
+            visibleHeights[i] = visibleHeights[visibleCount - 1 - i];
+            visibleHeights[visibleCount - 1 - i] = temp;
+        }
+
+        std::cout << "In column " << col << " there are " << visibleCount << " that can see. Their heights are: ";
+        for(int i = 0; i < visibleCount; ++i) {
             std::cout << visibleHeights[i];
-            if(i != monoStack.size() - 1) {
+            if(i != visibleCount - 1) {
                 std::cout << ", ";
             }
         }
