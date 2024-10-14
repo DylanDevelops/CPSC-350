@@ -15,15 +15,18 @@
 
 class SpeakerView {
     public:
+        // constructor/destructor
         SpeakerView(std::string inputFile);
         ~SpeakerView();
 
+        // public methods
         void Process();
 
     private:
+        // private methods
         void DetermineDimensions();
         void ReadHeights();
-        void CalculateVisibility();
+        void CalculateAndDisplayVisibility();
 
         // variables
         std::string inputPath;
