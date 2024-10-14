@@ -14,7 +14,7 @@ Below are all the sources I used throughout my project. Next to each link is how
     - https://www.w3schools.com/cpp/cpp_break.asp (Understanding how the "continue" keyword can be used in while loops)
     - Referenced class material and previous projects for help with file manipulation in C++
     - https://stackoverflow.com/questions/1051379/is-there-a-difference-between-copy-initialization-and-direct-initialization (Learned the difference between copy initialization and direct initialization when creating instances of classes)
-    - 
+    - https://www.geeksforgeeks.org/introduction-to-monotonic-stack-2/ (Helped me with understanding monotonic stacks more)
 
 RUNNING INSTRUCTIONS
 Compile the file as so: "g++ *.cpp -o program.out"

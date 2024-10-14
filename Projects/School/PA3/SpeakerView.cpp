@@ -8,7 +8,12 @@
 
 #include "SpeakerView.h"
 
-SpeakerView::SpeakerView(std::string inputFile) {
+SpeakerView::SpeakerView() {
+    
+}
+
+SpeakerView::SpeakerView(std::string inputFile)
+{
     inputPath = inputFile;
     numRows = 0;
     numCols = 0;

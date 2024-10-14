@@ -16,6 +16,7 @@
 class SpeakerView {
     public:
         // constructor/destructor
+        SpeakerView();
         SpeakerView(std::string inputFile);
         ~SpeakerView();
 
