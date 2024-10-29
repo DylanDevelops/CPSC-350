@@ -42,15 +42,6 @@ DblList<T>::DblList(){
 
 template<typename T>
 DblList<T>::~DblList(){
-    // implement memory cleanup
-    // ListNode<T>* current = m_front;
-
-    // while(current != nullptr) {
-    //     ListNode<T>* next = current->m_next;
-    //     delete current;
-    //     current = next;
-    // }
-
     m_front = nullptr;
     m_back = nullptr;
     m_size = 0;
@@ -120,6 +111,10 @@ void DblList<T>::add(int pos, T data){
 template<typename T>
 T DblList<T>::removeFront(){
     //make sure not empty
+    if(isEmpty()) {
+        throw std::out_of_range("List is empty");
+    }
+
     T data = m_front->m_data;
     if(m_size == 1){
         delete m_front;
@@ -138,26 +133,38 @@ T DblList<T>::removeFront(){
 template<typename T>
 T DblList<T>::removeBack(){
     //make sure not empty
-        T data = m_back->m_data;
+    if(isEmpty()) {
+        throw std::out_of_range("List is empty");
+    }
 
-        if(m_size == 1) {
-            delete m_back;
-            m_front = NULL;
-            m_back = NULL;
-        } else {
-            ListNode<T>* currBack = m_back;
-            m_back = m_back->m_prev;
-            m_back->m_next = NULL;
-            delete currBack;
-        }
+    T data = m_back->m_data;
 
-        --m_size;
-        return data;
+    if(m_size == 1) {
+        delete m_back;
+        m_front = NULL;
+        m_back = NULL;
+    } else {
+        ListNode<T>* currBack = m_back;
+        m_back = m_back->m_prev;
+        m_back->m_next = NULL;
+        delete currBack;
+    }
+
+    --m_size;
+    return data;
 }
 
 template<typename T>
 T DblList<T>::remove(int pos){
     //make sure not empty
+    if(isEmpty()) {
+        throw std::out_of_range("List is empty");
+    }
+
+    if(pos < 0 || pos >= m_size) {
+        throw std::out_of_range("Index out of range");
+    }
+
     T data;
     if (pos == 0) {
         data = removeFront();
