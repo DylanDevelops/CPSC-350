@@ -43,13 +43,13 @@ DblList<T>::DblList(){
 template<typename T>
 DblList<T>::~DblList(){
     // implement memory cleanup
-    ListNode<T>* current = m_front;
+    // ListNode<T>* current = m_front;
 
-    while(current != nullptr) {
-        ListNode<T>* next = current->m_next;
-        delete current;
-        current = next;
-    }
+    // while(current != nullptr) {
+    //     ListNode<T>* next = current->m_next;
+    //     delete current;
+    //     current = next;
+    // }
 
     m_front = nullptr;
     m_back = nullptr;
