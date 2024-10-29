@@ -35,8 +35,8 @@ class DblList{
 
 template<typename T>
 DblList<T>::DblList(){
-    m_front = NULL;
-    m_back = NULL;
+    m_front = nullptr;
+    m_back = nullptr;
     m_size = 0;
 }
 
@@ -118,12 +118,12 @@ T DblList<T>::removeFront(){
     T data = m_front->m_data;
     if(m_size == 1){
         delete m_front;
-        m_front = NULL;
-        m_back = NULL;
+        m_front = nullptr;
+        m_back = nullptr;
     }else{
         ListNode<T>* currFront = m_front;
         m_front = m_front->m_next;
-        m_front->m_prev = NULL;
+        m_front->m_prev = nullptr;
         delete currFront;
     }
     --m_size;
@@ -141,12 +141,12 @@ T DblList<T>::removeBack(){
 
     if(m_size == 1) {
         delete m_back;
-        m_front = NULL;
-        m_back = NULL;
+        m_front = nullptr;
+        m_back = nullptr;
     } else {
         ListNode<T>* currBack = m_back;
         m_back = m_back->m_prev;
-        m_back->m_next = NULL;
+        m_back->m_next = nullptr;
         delete currBack;
     }
 
@@ -161,6 +161,7 @@ T DblList<T>::remove(int pos){
         throw std::out_of_range("List is empty");
     }
 
+    // checks if not out of range
     if(pos < 0 || pos >= m_size) {
         throw std::out_of_range("Index out of range");
     }

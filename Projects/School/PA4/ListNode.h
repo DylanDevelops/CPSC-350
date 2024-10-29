@@ -23,14 +23,14 @@ class ListNode{
 template<typename T>
 ListNode<T>::ListNode(T data){
     m_data = data;
-    m_next = NULL;
-    m_prev = NULL;
+    m_next = nullptr;
+    m_prev = nullptr;
 }
 
 template<typename T>
 ListNode<T>::~ListNode(){
-    m_next = NULL;
-    m_prev = NULL;
+    m_next = nullptr;
+    m_prev = nullptr;
 }
 
 #endif
