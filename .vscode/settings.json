@@ -53,6 +53,9 @@
         "unordered_map": "cpp",
         "vector": "cpp",
         "fstream": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "filesystem": "cpp",
+        "__tree": "cpp",
+        "set": "cpp"
     }
 }
