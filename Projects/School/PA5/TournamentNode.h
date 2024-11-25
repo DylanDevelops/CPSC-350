@@ -10,6 +10,7 @@
 #define TOURNAMENT_NODE_H
 
 #include "Monster.h"
+#include <iostream>
 
 class TournamentNode {
     public:

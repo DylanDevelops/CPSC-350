@@ -88,7 +88,7 @@ Monster TournamentTree::DoubleElimination() {
     for(int i = 0; i < this->monsterLosersBracket.size(); ++i) {
         // loop through the losers bracket
         if(this->monsterLosersBracket[i].GetName() == "TEMP" || this->monsterLosersBracket[i].GetName() == "") {
-            // uses vector erase method to remove the entry int he vector
+            // uses vector erase method to remove the entry in the vector
             this->monsterLosersBracket.erase(this->monsterLosersBracket.begin() + i);
             
             // go back one to check the index again
@@ -118,19 +118,20 @@ Monster TournamentTree::DoubleEliminationWinner() {
 
 // a helper method to help with saving the tree as a dot file
 void TournamentTree::SaveTreeAsDotHelper(TournamentNode* node, std::ofstream& fileStream, int& nodeNumber) {
-    if (node == NULL) return;
+    // skip temp variables
+    if (node == NULL || node->monster.GetName() == "TEMP") return;
 
     int currentNumber = nodeNumber++;
     fileStream << "    node" << currentNumber << " [label=\"" << node->monster.GetName()
          << " (Power: " << node->monster.GetScreamPower() << ")\"];\n";
 
-    if (node->left) {
+    if (node->left && node->left->monster.GetName() != "TEMP") {
         int leftNumber = nodeNumber;
         SaveTreeAsDotHelper(node->left, fileStream, nodeNumber);
         fileStream << "    node" << currentNumber << " -> node" << leftNumber << ";\n";
     }
 
-    if (node->right) {
+    if (node->right && node->right->monster.GetName() != "TEMP") {
         int rightNumber = nodeNumber;
         SaveTreeAsDotHelper(node->right, fileStream, nodeNumber);
         fileStream << "    node" << currentNumber << " -> node" << rightNumber << ";\n";
@@ -168,7 +169,7 @@ void TournamentTree::HelpCreateTournamentTree(TournamentNode*& rootNode, int& cu
         }
     }
 
-    if(currentPowerLevel > height || currentSize > this->monsterBracketSize) {
+    if(currentPowerLevel > height || currentSize >= this->monsterBracketSize) {
         // stop recursion when it has completed its task
         return;
     }
@@ -176,27 +177,24 @@ void TournamentTree::HelpCreateTournamentTree(TournamentNode*& rootNode, int& cu
     if(rootNode == nullptr) {
         // Handles if the root is nullptr
         rootNode = new TournamentNode();
+        rootNode->left = nullptr;
+        rootNode->right = nullptr;
         rootNode->hasMonster = false;
         ++currentSize;
     }
 
-    if(currentPowerLevel == (height - 1)) {
+    if(currentPowerLevel == height) {
         // if at the last power level and near the end of the bracket, assign monster to root
-        if(index >= this->monsterBracketSize - 2) {
+        if(index < monsterBracket.size()) {
             rootNode->monster = monsterBracket[index];
             rootNode->hasMonster = true;
             ++index;
         }
     } else {
-        // otherwise, assign a monster to root
-        rootNode->monster = monsterBracket[index];
-        rootNode->hasMonster = true;
-        ++index;
+        // recursively complete the right and left nodes for the rest of the tree
+        HelpCreateTournamentTree(rootNode->left, currentSize, currentPowerLevel + 1, monsterBracket, index);
+        HelpCreateTournamentTree(rootNode->right, currentSize, currentPowerLevel + 1, monsterBracket, index);
     }
-
-    // recursively complete the right and left nodes for the rest of the tree
-    HelpCreateTournamentTree(rootNode->left, currentSize, currentPowerLevel + 1, monsterBracket, index);
-    HelpCreateTournamentTree(rootNode->right, currentSize, currentPowerLevel + 1, monsterBracket, index);
 }
 
 void TournamentTree::HelpTournament(TournamentNode* rootNode) {
@@ -215,6 +213,9 @@ void TournamentTree::HelpTournament(TournamentNode* rootNode) {
 
     if(rootNode->left && rootNode->right) {
         // if left and right exists, fight!
-        this->monsterLosersBracket.push_back(rootNode->FightMonster());
+        Monster loser = rootNode->FightMonster();
+        if (loser.GetName() != "TEMP") {
+            this->monsterLosersBracket.push_back(loser);
+        }
     }
 }

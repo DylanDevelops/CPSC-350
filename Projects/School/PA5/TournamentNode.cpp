@@ -14,6 +14,7 @@ TournamentNode::TournamentNode() {
     this->left = nullptr;
     this->right = nullptr;
     this->monster = Monster();
+    this->hasMonster = false;
 }
 
 // overloaded constructor
@@ -22,6 +23,7 @@ TournamentNode::TournamentNode(Monster monster) {
     this->left = nullptr;
     this->right = nullptr;
     this->monster = monster;
+    this->hasMonster = true;
 }
 
 // deconstructor
@@ -33,6 +35,11 @@ TournamentNode::~TournamentNode() {
 Monster TournamentNode::FightMonster() {
     Monster loser;
 
+    if (left == nullptr || right == nullptr) {
+        // return a monster here so there is no seg fault
+        return Monster();
+    }
+
     if(left->monster.GetScreamPower() == right->monster.GetScreamPower()) {
         // if they have the same scream power pick a random monster to advance
         int randomNumber = std::rand() % 2;
@@ -40,43 +47,23 @@ Monster TournamentNode::FightMonster() {
         // picks a winner based on random chance
         if(randomNumber == 0) {
             winner = left;
-        } else if(randomNumber == 1) {
-            winner = right;
-        }
-
-        // saves the results of the fight
-        monster = winner->monster;
-        loser = right->monster;
-
-        // returns the loser of the fight
-        return loser;
-    }
-
-    if(right->hasMonster) {
-        // if the right side has a monster
-        if(left->monster.ScreamFight(right->monster)) {
-            // save data from fight
-            winner = left;
-            monster = winner->monster;
             loser = right->monster;
         } else {
-            // the inverse
             winner = right;
             loser = left->monster;
         }
-    } else {
-        if(right == nullptr) {
-            // if right side has no monster
-            winner = left;
-            monster = winner->monster;
-            loser = Monster();
-        }
-
-        // sets results of fight
+    } else if(left->monster.ScreamFight(right->monster)) {
+        // save data from fight
         winner = left;
-        monster = winner->monster;
         loser = right->monster;
+    } else {
+        // the inverse
+        winner = right;
+        loser = left->monster;
     }
+
+    // sets results of fight
+    monster = winner->monster;
 
     // returns the loser
     return loser;
