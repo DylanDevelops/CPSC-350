@@ -1,7 +1,7 @@
 /** 
- * Full Name: Dylan M. Ravel
- * Student ID: 2445987
- * Chapman Email: ravel@chapman.edu
+ * Full Name: Dylan M. Ravel and Noslen Cruz-Muniz
+ * Student ID: 2445987 and 2447745
+ * Chapman Email: ravel@chapman.edu and cruzmuniz@chapman.edu
  * Course Number and Section: CPSC-350-03
  * Assignment or Exercise Number: PA5: Scare Games
 */
@@ -40,7 +40,6 @@ class TournamentTree {
         std::ifstream fileReader;
         std::string fileName;
         int monsterBracketSize;
-
 
         // helper methods
         void HelpCreateTournamentTree(TournamentNode*& rootNode, int& currentSize, int currentPowerLevel, std::vector<Monster>& monsterBracket, int& index);
