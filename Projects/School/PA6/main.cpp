@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
 
     // Creates a file processor to use
     FileProcessor* fileProcessor = new FileProcessor(argv[1]);
-    fileProcessor->processFile();
+    fileProcessor->ProcessInputFile();
 
     // Deletes the file processor
     delete fileProcessor;

@@ -6,6 +6,9 @@
  * Assignment or Exercise Number: PA6: Spanning the Gamut
 */
 
+#ifndef WGRAPH_H
+#define WGRAPH_H
+
 #include <iostream>
 #include <vector>
 #include <stack>
@@ -19,9 +22,13 @@ template <typename T>
 class Vertex {
 public:
     T name; // Each vertex has a 'name' of type T
+    Vertex(); // default constructor
     Vertex(T n); // Constructor
     ~Vertex(); // Destructor
 };
+
+template <typename T>
+Vertex<T>::Vertex() {} // default constructor
 
 template <typename T>
 Vertex<T>::Vertex(T n) { name = n; } // Assign 'name' during construction
@@ -33,6 +40,7 @@ Vertex<T>::~Vertex() {} // No specific cleanup needed for Vertex
 template <typename T>
 class WGraph {
 public:
+    WGraph(); // default constructor
     WGraph(int sz); // Constructor to initialize graph of a given size
     ~WGraph(); // Destructor to clean up dynamic allocations
 
@@ -46,6 +54,7 @@ public:
     int findIslands();
     double cheapestCost(T i, T j); // Find the cheapest path between two vertices, uses calcFW()
     void calcFW(); // Calculate the Floyd-Warshall algorithm to find shortest paths
+    void calcMST();
 
 private:
     int m_size; // Maximum number of vertices in the graph
@@ -57,6 +66,12 @@ private:
     bool recalcFW;               // Flag to determine if Floyd-Warshall needs recalculation
     int** m_conn;                // Matrix to store shortest paths between all pairs of vertices
 };
+
+// DEFAULT CONSTRUCTOR
+template <typename T>
+WGraph<T>::WGraph() {
+
+}
 
 // CONSTRUCTOR
 template <typename T>
@@ -253,6 +268,12 @@ void WGraph<T>::calcFW() {
     recalcFW = false;
 }
 
+// MST Calculation
+template <typename T>
+void WGraph<T>::calcMST() {
+    
+}
+
 // Find the cheapest path
 template <typename T>
 double WGraph<T>::cheapestCost(T i, T j) {
@@ -269,3 +290,5 @@ double WGraph<T>::cheapestCost(T i, T j) {
 
     return m_conn[source][sink];
 }
+
+#endif
