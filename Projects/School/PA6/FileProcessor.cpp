@@ -44,7 +44,6 @@ void FileProcessor::ProcessInputFile() {
             double weight;
             inputFile >> weight;
             if (weight != 0.0) {
-                std::cout << "Adding edge: " << weight << std::endl;
                 graph.addEdge(i, j, (int)weight);
             }
         }

@@ -16,6 +16,8 @@
 #include <set>
 #include <unordered_map>
 #include <limits> // For numeric limits to indicate infinity for conn matrix
+#include <algorithm> // For std::sort
+#include <iomanip> // For std::fixed and std::setprecision
 
 // CLASS TO REPRESENT EACH VERTEX
 template <typename T>
@@ -65,6 +67,21 @@ private:
     // FW code
     bool recalcFW;               // Flag to determine if Floyd-Warshall needs recalculation
     int** m_conn;                // Matrix to store shortest paths between all pairs of vertices
+
+    // An edge struct that can be used
+    struct Edge {
+        int vertex1;
+        int vertex2;
+        int weight;
+        bool operator<(const Edge& other) const {
+            return weight < other.weight;
+        }
+    };
+
+    std::vector<Edge> edges; // List of all edges in the graph
+
+    int find(std::vector<int>& parent, int x);
+    void unionSet(std::vector<int>& parent, std::vector<int>& rank, int x, int y);
 };
 
 // DEFAULT CONSTRUCTOR
@@ -121,6 +138,7 @@ void WGraph<T>::addEdge(T name1, T name2, int weight) {
         int j = m_nameToIndex[name2];
         m_adj[i][j] = weight;
         m_adj[j][i] = weight; // Symmetric for undirected graph
+        edges.push_back({i, j, weight});
     } else {
         std::cerr << "One or both vertices not found in the graph." << std::endl;
     }
@@ -271,7 +289,92 @@ void WGraph<T>::calcFW() {
 // MST Calculation
 template <typename T>
 void WGraph<T>::calcMST() {
+    // Initialize the parent vector to keep track of the parent of each vertex
+    std::vector<int> parent(m_size);
     
+    // Initialize the rank vector to keep track of the rank (depth) of each tree
+    std::vector<int> rank(m_size, 0);
+
+    // Initially, each vertex is its own parent (each vertex is its own set)
+    for (int i = 0; i < m_size; ++i) {
+        parent[i] = i;
+    }
+
+    // Sort the edges in non-decreasing order of their weights
+    std::sort(edges.begin(), edges.end());
+
+    // Initialize the total cost of the Minimum Spanning Tree (MST) to 0
+    double cost = 0;
+
+    // Initialize the MST adjacency matrix with all weights set to 0.0
+    std::vector<std::vector<double>> matrix(m_size, std::vector<double>(m_size, 0.0));
+
+    // Iterate through all edges in the graph
+    for (int i = 0; i < edges.size(); ++i) {
+        // Get the current edge from the list of edges
+        const Edge& edge = edges[i];
+        
+        // Find the root of the set containing vertex1 and vertex2 of the edge
+        int root1 = find(parent, edge.vertex1);
+        int root2 = find(parent, edge.vertex2);
+        
+        // If the roots are different, the vertices are in different sets
+        if (root1 != root2) {
+            // Unite the sets containing vertex1 and vertex2
+            unionSet(parent, rank, root1, root2);
+            
+            // Add the weight of the edge to the total cost of the MST
+            cost += edge.weight;
+            
+            // Update the MST adjacency matrix with the edge weight
+            matrix[edge.vertex1][edge.vertex2] = edge.weight;
+            matrix[edge.vertex2][edge.vertex1] = edge.weight;
+        }
+    }
+
+    // Sets the doubles to be displayed as 1.0, 2.0, 3.0, etc.. instead of 1, 2, 3, etc..
+    std::cout << std::fixed << std::setprecision(1);
+    
+    // prints the adjacency matrix
+    std::cout << "The cost of the minimum spanning tree is " << cost << std::endl;
+    for (int i = 0; i < m_size; ++i) {
+        for (int j = 0; j < m_size; ++j) {
+            std::cout << matrix[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+template <typename T>
+int WGraph<T>::find(std::vector<int>& parent, int x) {
+    // If x is not its own parent, it means x is not the root of its set
+    if (parent[x] != x) {
+        // Recursively find the root of x's parent and perform path compression
+        parent[x] = find(parent, parent[x]);
+    }
+    // Return the root of the set containing x
+    return parent[x];
+}
+
+template <typename T>
+void WGraph<T>::unionSet(std::vector<int>& parent, std::vector<int>& rank, int r1, int r2) {
+    // Find the root of the set containing r1 and r2
+    int root1 = find(parent, r1);
+    int root2 = find(parent, r2);
+
+    // If the roots are different, perform the union
+    if (root1 != root2) {
+        // Attach the tree with the lower rank to the tree with the higher rank
+        if (rank[root1] > rank[root2]) {
+            parent[root2] = root1;
+        } else {
+            parent[root1] = root2;
+            // If the ranks are the same, increment the rank of the new root
+            if (rank[root1] == rank[root2]) {
+                rank[root2]++;
+            }
+        }
+    }
 }
 
 // Find the cheapest path
