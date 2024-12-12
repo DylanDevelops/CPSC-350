@@ -9,7 +9,8 @@ string reverseString(string& input) {
     queue<int> digits;
     string finalString = "";
 
-    for(int i = 0; i < input.size(); ++i) {
+    for(int i = 0; i < input.size(); ++i)
+    {
         if(isalpha(input[i])) {
             letters.push(input[i]);
         } else if(isdigit(input[i])) {
